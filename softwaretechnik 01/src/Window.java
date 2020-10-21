@@ -112,6 +112,7 @@ public class Window extends Frame implements WindowListener, MouseListener {
 			setBackground(Color.blue);
 			count = 0;
 			
+			
 		}
 		
 	};
