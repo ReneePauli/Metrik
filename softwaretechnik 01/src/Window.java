@@ -3,11 +3,16 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.awt.geom.Ellipse2D;
 import java.awt.event.MouseListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Menu;
+import java.awt.MenuBar;
+import java.awt.MenuItem;
 
 
 
@@ -32,7 +37,86 @@ public class Window extends Frame implements WindowListener, MouseListener {
         setBackground(Color.cyan);
         this.addMouseListener(this);
         
+        MenuBar mb = new MenuBar();
+        Menu background = new Menu("Hintergrund"); 
+        MenuItem item1 = new MenuItem("Weiﬂ");
+        MenuItem item2 = new MenuItem("Gelb");
+        MenuItem item3 = new MenuItem("Rot");
+        MenuItem item4 = new MenuItem("Gr¸n");
+        MenuItem item5 = new MenuItem("Blau");
+        background.add(item1);
+        background.add(item2);
+        background.add(item3);
+        background.add(item4);
+        background.add(item5);
+        mb.add(background);
+        setMenuBar(mb);
+        
+        item1.addActionListener(weiﬂ);
+        item2.addActionListener(gelb);
+        item3.addActionListener(rot);
+        item4.addActionListener(gruen);
+        item5.addActionListener(blau);
+        
+        
      } 
+	
+	ActionListener weiﬂ = new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			setBackground(Color.white);
+			count = 0;
+			
+		}
+		
+	};
+	
+	ActionListener gelb = new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			setBackground(Color.yellow);
+			count = 0;
+			
+		}
+		
+	};
+	
+	ActionListener rot = new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			setBackground(Color.red);
+			count = 0;
+			
+		}
+		
+	};
+	
+	ActionListener gruen = new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			setBackground(Color.green);
+			count = 0;
+			
+		}
+		
+	};
+	
+	ActionListener blau = new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			setBackground(Color.blue);
+			count = 0;
+			
+		}
+		
+	};
+	
+	
 	
 	public void ellipsepaint(Graphics g) {
 		System.out.println(count);
