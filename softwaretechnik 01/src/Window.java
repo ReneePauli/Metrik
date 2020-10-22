@@ -185,9 +185,6 @@ public class Window extends Frame implements WindowListener, MouseListener {
 				area2.setBounds(400, 75, 100, 25);
 				add(area2);
 				
-				System.out.println(xEins);
-				System.out.println(xZwei);
-				
 				double ergebnis = Math.sqrt(Math.pow(xEins - xZwei,2)+(Math.pow(yEins - yZwei,2)));
 				area3.setText("Abstand: " + ergebnis);
 				area3.setBounds(400, 100, 100, 25);
