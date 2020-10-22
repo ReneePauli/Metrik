@@ -120,7 +120,6 @@ public class Window extends Frame implements WindowListener, MouseListener {
 		Graphics2D gd2 = (Graphics2D) g;
 		if (count < 2) {
 			Ellipse2D ellipse2D = new Ellipse2D.Float(x - radius / 2, y - radius / 2, radius, radius);
-
 			gd2.draw(ellipse2D);
 			count++;
 
@@ -133,7 +132,7 @@ public class Window extends Frame implements WindowListener, MouseListener {
 	}
 
 	public void mouseClicked(MouseEvent e) {
-
+	
 		if (e.getClickCount() == 2) {
 			ellipsepaint(getGraphics());
 			if (count == 1) {
@@ -148,6 +147,7 @@ public class Window extends Frame implements WindowListener, MouseListener {
 						+ MouseInfo.getPointerInfo().getLocation().y + ")");
 				area.setBounds(400, 75, 100, 25);
 				add(area);
+			
 			}
 		}
 	}
