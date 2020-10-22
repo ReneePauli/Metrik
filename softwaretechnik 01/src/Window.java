@@ -38,14 +38,14 @@ public class Window extends Frame implements WindowListener, MouseListener {
 		System.out.println(count);
 		Graphics2D gd2 = (Graphics2D)g;
 		if(count < 2) {
-		 
+		Ellipse2D ellipse2D = new Ellipse2D.Float(x-25,y-25,50,50); 
 		
 		
-		gd2.drawRect(x, y, 50, 50);
+		gd2.draw(ellipse2D);
 		count++;
 		
 		} else if(count == 2) {
-			setBackground(Color.black);
+			repaint();
 			count = 0; 
 			
 			
