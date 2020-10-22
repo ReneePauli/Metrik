@@ -23,9 +23,14 @@ public class Window extends Frame implements WindowListener, MouseListener {
 	public float x, y;
 	int count = 0;
 	int radius = 50;
+	int xEins;
+	int xZwei;
+	int yEins;
+	int yZwei;
 	TextField area = new TextField();
 	TextField area2 = new TextField();
-	
+	TextField area3 = new TextField();
+
 	public Window() {
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
@@ -146,7 +151,7 @@ public class Window extends Frame implements WindowListener, MouseListener {
 		System.out.println(count);
 		Graphics2D gd2 = (Graphics2D) g;
 		if (count < 2) {
-			Ellipse2D ellipse2D = new Ellipse2D.Float(x - radius/2, y - radius/2, radius, radius);
+			Ellipse2D ellipse2D = new Ellipse2D.Float(x - radius / 2, y - radius / 2, radius, radius);
 			gd2.draw(ellipse2D);
 			count++;
 
@@ -155,28 +160,39 @@ public class Window extends Frame implements WindowListener, MouseListener {
 			count = 0;
 			remove(area);
 			remove(area2);
+			remove(area3);
 		}
 
 	}
 
 	public void mouseClicked(MouseEvent e) {
-		int xEins = MouseInfo.getPointerInfo().getLocation().x;
-		int yEins = MouseInfo.getPointerInfo().getLocation().y;
-
+		
 		if (e.getClickCount() == 2) {
 			ellipsepaint(getGraphics());
 			if (count == 1) {
-				 area.setText("(" + xEins + ", " + yEins + ")");
+				xEins = MouseInfo.getPointerInfo().getLocation().x;
+				yEins = MouseInfo.getPointerInfo().getLocation().y;
+				area.setText("(" + xEins + ", " + yEins + ")");
 				area.setBounds(400, 50, 100, 25);
 				add(area);
 			}
-			int xZwei = MouseInfo.getPointerInfo().getLocation().x;
-			int yZwei = MouseInfo.getPointerInfo().getLocation().y;
 
 			if (count == 2) {
+				xZwei = MouseInfo.getPointerInfo().getLocation().x;
+				yZwei = MouseInfo.getPointerInfo().getLocation().y;
+
 				area2.setText("(" + xZwei + ", " + yZwei + ")");
 				area2.setBounds(400, 75, 100, 25);
 				add(area2);
+				
+				System.out.println(xEins);
+				System.out.println(xZwei);
+				
+				double ergebnis = Math.sqrt(Math.pow(xEins - xZwei,2)+(Math.pow(yEins - yZwei,2)));
+				area3.setText("Abstand: " + ergebnis);
+				area3.setBounds(400, 100, 100, 25);
+				add(area3);
+
 			}
 		}
 	}
