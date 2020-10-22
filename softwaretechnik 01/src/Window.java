@@ -23,8 +23,13 @@ public class Window extends Frame implements WindowListener, MouseListener {
 	public float x, y;
 	int count = 0;
 	int radius = 50;
+	int xEins;
+	int yEins;
+	int xZwei;
+	int yZwei;
 	TextField area = new TextField();
 	TextField area2 = new TextField();
+	Graphics2D gd2;
 	
 	public Window() {
 		addWindowListener(new WindowAdapter() {
@@ -144,7 +149,7 @@ public class Window extends Frame implements WindowListener, MouseListener {
 
 	public void ellipsepaint(Graphics g) {
 		System.out.println(count);
-		Graphics2D gd2 = (Graphics2D) g;
+		gd2 = (Graphics2D) g;
 		if (count < 2) {
 			Ellipse2D ellipse2D = new Ellipse2D.Float(x - radius/2, y - radius/2, radius, radius);
 			gd2.draw(ellipse2D);
@@ -160,26 +165,34 @@ public class Window extends Frame implements WindowListener, MouseListener {
 	}
 
 	public void mouseClicked(MouseEvent e) {
-		int xEins = MouseInfo.getPointerInfo().getLocation().x;
-		int yEins = MouseInfo.getPointerInfo().getLocation().y;
+		
 
 		if (e.getClickCount() == 2) {
 			ellipsepaint(getGraphics());
 			if (count == 1) {
+				 xEins = MouseInfo.getPointerInfo().getLocation().x;
+				 yEins = MouseInfo.getPointerInfo().getLocation().y;
 				 area.setText("(" + xEins + ", " + yEins + ")");
 				area.setBounds(400, 50, 100, 25);
 				add(area);
 			}
-			int xZwei = MouseInfo.getPointerInfo().getLocation().x;
-			int yZwei = MouseInfo.getPointerInfo().getLocation().y;
+			
 
 			if (count == 2) {
+				 xZwei = MouseInfo.getPointerInfo().getLocation().x;
+				 yZwei = MouseInfo.getPointerInfo().getLocation().y;
 				area2.setText("(" + xZwei + ", " + yZwei + ")");
 				area2.setBounds(400, 75, 100, 25);
 				add(area2);
+				gd2.drawLine(xEins, yEins, xZwei, yZwei);
+				System.out.println(xEins+" "+ yEins+" "+ xZwei+" "+ yZwei);
+				
 			}
 		}
 	}
+	
+
+
 
 	public void mousePressed(MouseEvent e) {
 
